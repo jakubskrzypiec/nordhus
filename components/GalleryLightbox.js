@@ -10,7 +10,7 @@ export default function GalleryLightbox({items,className=""}){
  {index!==null&&<div ref={dialog} role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia" className="fixed inset-0 z-[100] flex items-center justify-center bg-[#111]/95 p-5" onMouseDown={e=>{if(e.target===e.currentTarget)close()}}>
   <button onClick={close} className="focus-ring absolute right-5 top-5 z-10 px-3 py-2 text-sm text-white" aria-label="Zamknij podgląd">Zamknij</button>
   <button onClick={()=>setIndex(i=>(i-1+items.length)%items.length)} className="focus-ring absolute left-3 top-1/2 z-10 -translate-y-1/2 px-3 py-4 text-3xl text-white" aria-label="Poprzednie zdjęcie">←</button>
-  <div className="relative h-[82vh] w-[88vw]"><Image src={items[index].src} alt={items[index].alt} fill quality={90} className="object-contain" sizes="90vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/></div>
+  <div className="relative h-[82vh] w-[88vw]"><Image src={items[index].src} alt={items[index].alt} fill className="object-contain" sizes="90vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/></div>
   <button onClick={()=>setIndex(i=>(i+1)%items.length)} className="focus-ring absolute right-3 top-1/2 z-10 -translate-y-1/2 px-3 py-4 text-3xl text-white" aria-label="Następne zdjęcie">→</button>
  </div>}</>
 }

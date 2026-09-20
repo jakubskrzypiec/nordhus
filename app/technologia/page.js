@@ -39,7 +39,7 @@ export default function Page(){
  </Container>
 </section>
 
-<FullBleedImage image={asset("/images/montaz.jpg")} alt="Montaż modułu NORDHUS" eyebrow="Z HALI NA DZIAŁKĘ" title="Prefabrykacja kończy się dopiero po montażu." text="Dokładność modułu ma znaczenie dopiero wtedy, gdy fundament, transport i połączenia na działce są przygotowane do tego samego standardu." align="right"/>
+<FullBleedImage image={asset("/images/montaz.jpg")} alt="Montaż modułu NORDHUS" eyebrow="Z HALI NA DZIAŁKĘ" title="Prefabrykacja kończy się dopiero po montażu." text="Dokładność modułu ma znaczenie dopiero wtedy, gdy fundament, transport i połączenia na działce są przygotowane do tego samego standardu."/>
 
 <section className="section-space">
  <Container>

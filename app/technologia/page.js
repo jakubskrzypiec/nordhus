@@ -4,7 +4,7 @@ import CTA from "@/components/CTA";
 import FullBleedImage from "@/components/FullBleedImage";
 import Image from "next/image";
 
-export const metadata={title:"Technologia prefabrykacji",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS."};
+export const metadata={title:"Technologia prefabrykacji",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",openGraph:{title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:["/images/produkcja.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:["/images/produkcja.jpg"]}};
 
 export default function Page(){
  const wall=[["01","Elewacja wentylowana","20–28 mm okładziny + szczelina wentylacyjna"],["02","Poszycie zewnętrzne","płyta konstrukcyjna 12–15 mm"],["03","Warstwa wiatroizolacyjna","membrana wysokoparoprzepuszczalna"],["04","Konstrukcja","drewno klasy C24, słupki 45 × 195 mm"],["05","Izolacja między słupkami","wełna mineralna 195 mm"],["06","Warstwa instalacyjna","ruszt 45 mm + dodatkowa izolacja"],["07","Paroizolacja / warstwa szczelna","ciągła warstwa po ciepłej stronie"],["08","Wykończenie wewnętrzne","płyta g-k lub włóknowo-gipsowa 12,5–15 mm"]];

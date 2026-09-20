@@ -21,7 +21,7 @@ export default function RealizationsGrid(){
   <div className="mb-12 flex flex-wrap gap-2">{models.map(m=><button key={m} onClick={()=>{setFilter(m);setIndex(null)}} className={`border px-4 py-2 text-sm transition ${filter===m?"border-[var(--ink)] bg-[var(--ink)] text-white":"border-[var(--line)] bg-transparent hover:border-[var(--ink)]"}`}>{m}</button>)}</div>
   <div className="reveal-group grid auto-rows-[230px] grid-cols-12 gap-5 md:auto-rows-[300px]">{visible.map((x,idx)=><button type="button" onClick={()=>setIndex(idx)} key={x.location+x.year+idx} className={`reveal gallery-item group relative overflow-hidden bg-[#e7e6e1] text-left ${idx%4===0?"col-span-12 row-span-2 md:col-span-7":idx%4===1?"col-span-12 md:col-span-5":idx%4===2?"col-span-12 md:col-span-5":"col-span-12 row-span-2 md:col-span-7 md:col-start-6"}`}>
    <Image src={x.image} alt={`${x.model} — ${x.location}`} fill className="object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.04]" sizes="(min-width:768px) 58vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
-   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-80"/>
+   <div className="absolute inset-0 bg-black/40"/>
    <div className="absolute inset-x-0 bottom-0 translate-y-3 p-5 text-white opacity-90 transition duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-y-0 group-hover:opacity-100 md:p-7"><p className="text-[.6875rem] uppercase tracking-[.18em] text-white/65">{x.location} · {x.year}</p><h2 className="mt-2 text-2xl font-medium">{x.model}</h2></div>
    <span className="gallery-cursor" aria-hidden="true">Powiększ</span>
   </button>)}</div>

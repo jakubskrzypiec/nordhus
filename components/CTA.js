@@ -1,2 +1,5 @@
-import Link from "next/link";import Container from "./Container";
-export default function CTA({title="Masz działkę? Zacznijmy od liczb.",text="Podaj lokalizację, planowany metraż i budżet. Wskażemy model, który warto sprawdzić w pierwszej kolejności.",href="/kontakt",label="Zapytaj o wycenę"}){return <section className="section-space border-y border-[var(--line)] bg-[#f1f0eb]"><Container><div className="mx-auto max-w-[680px] text-center"><p className="eyebrow text-[var(--sage)]">Następny krok</p><h2 className="mt-5">{title}</h2><p className="mx-auto mt-6 max-w-[60ch] text-[1.0625rem] leading-[1.75] text-[color:rgba(28,28,26,.85)]">{text}</p><Link href={href} className="btn-sweep focus-ring mt-8 inline-flex bg-[var(--ink)] px-6 py-3.5 text-sm font-semibold text-white"><span>{label}</span></Link></div></Container></section>}
+import Link from "next/link";
+import Container from "./Container";
+export default function CTA({title="Masz działkę? Zacznijmy od liczb.",text="Podaj lokalizację, planowany metraż i budżet. Wskażemy model, który warto sprawdzić w pierwszej kolejności.",href="/kontakt",label="Zapytaj o wycenę"}){
+ return <section className="section-space border-y border-[var(--line)] bg-white"><Container><div className="mx-auto max-w-[720px] text-center"><p className="eyebrow">NASTĘPNY KROK</p><h2 className="mt-5">{title}</h2><p className="section-intro mt-6">{text}</p><Link href={href} className="site-button focus-ring mt-8 inline-flex">{label}</Link></div></Container></section>
+}

@@ -4,7 +4,7 @@ export default function ProcessTimeline({steps}){
    <p className="process-number">{String(step.number).padStart(2,"0")}</p>
    <div className="process-dot" aria-hidden="true"/>
    <h3>{step.title}</h3>
-   <p className="mt-2 text-sm text-[var(--muted)]">{step.duration}</p>
+   <p className="process-duration mt-2">{step.duration}</p>
   </article>)}
  </div>
 }

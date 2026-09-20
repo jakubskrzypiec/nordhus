@@ -8,7 +8,7 @@ export default function Hero({image,eyebrow,title,text,primary,secondary,full=fa
   <Image src={image} alt={alt} fill priority className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
   <div className="absolute inset-0 bg-[rgba(28,28,26,.16)]"/>
   <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,28,26,.76)] via-[rgba(28,28,26,.28)] to-[rgba(28,28,26,.08)]"/>
-  <Container className={`relative z-10 flex ${full?"min-h-svh":"min-h-[78svh]"} items-end pb-12 pt-28 md:pb-20`}>
+  <Container className={`relative z-10 flex flex-col ${full?"min-h-svh":"min-h-[78svh]"} justify-end pb-12 pt-28 md:pb-20`}>
    <div className="max-w-4xl">
     <p className="eyebrow !text-left text-white/75">{eyebrow}</p>
     <h1 className="hero-h1 mt-4 text-left">{title}</h1>

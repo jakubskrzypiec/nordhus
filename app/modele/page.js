@@ -5,10 +5,11 @@ import CTA from "@/components/CTA";
 import FullBleedImage from "@/components/FullBleedImage";
 import {models} from "@/data/models";
 
-export const metadata={title:"Modele domów modułowych",description:"Porównaj cztery modele NORDHUS od 68 do 156 m². Zobacz metraż, układ, parametry i ceny początkowe.",openGraph:{title:"Modele domów modułowych | NORDHUS",description:"Porównaj cztery modele NORDHUS od 68 do 156 m². Zobacz metraż, układ, parametry i ceny początkowe.",images:["/images/model-92.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"Modele domów modułowych | NORDHUS",description:"Porównaj cztery modele NORDHUS od 68 do 156 m². Zobacz metraż, układ, parametry i ceny początkowe.",images:["/images/model-92.jpg"]}};
+import {asset} from "@/lib/asset";
+export const metadata={title:"Modele domów modułowych",description:"Porównaj cztery modele NORDHUS od 68 do 156 m². Zobacz metraż, układ, parametry i ceny początkowe.",openGraph:{title:"Modele domów modułowych | NORDHUS",description:"Porównaj cztery modele NORDHUS od 68 do 156 m². Zobacz metraż, układ, parametry i ceny początkowe.",images:[asset("/images/model-92.jpg")],type:"website"},twitter:{card:"summary_large_image",title:"Modele domów modułowych | NORDHUS",description:"Porównaj cztery modele NORDHUS od 68 do 156 m². Zobacz metraż, układ, parametry i ceny początkowe.",images:[asset("/images/model-92.jpg")]}};
 
 export default function Page(){return <>
-<Hero image="/images/model-92.jpg" alt="NORDHUS 92" eyebrow="MODELE" title={<>68–156 m².<br/>Cztery punkty wyjścia.</>} text="Każdy model ma określony układ, standard bazowy i cenę początkową. Różnią się liczbą modułów, powierzchnią zabudowy i sposobem organizacji strefy prywatnej."/>
+<Hero image={asset(asset("/images/model-92.jpg"))} alt="NORDHUS 92" eyebrow="MODELE" title={<>68–156 m².<br/>Cztery punkty wyjścia.</>} text="Każdy model ma określony układ, standard bazowy i cenę początkową. Różnią się liczbą modułów, powierzchnią zabudowy i sposobem organizacji strefy prywatnej."/>
 
 <section className="section-space">
  <Container>
@@ -37,7 +38,7 @@ export default function Page(){return <>
  </Container>
 </section>
 
-<FullBleedImage image="/images/produkcja.jpg" alt="Produkcja modułów NORDHUS" eyebrow="WSPÓLNY SYSTEM" title="Cztery modele korzystają z tej samej logiki produkcji." text="Różni się skala domu i liczba modułów. Sposób przygotowania konstrukcji, instalacji i kontroli produkcyjnej pozostaje wspólny."/>
+<FullBleedImage image={asset(asset("/images/produkcja.jpg"))} alt="Produkcja modułów NORDHUS" eyebrow="WSPÓLNY SYSTEM" title="Cztery modele korzystają z tej samej logiki produkcji." text="Różni się skala domu i liczba modułów. Sposób przygotowania konstrukcji, instalacji i kontroli produkcyjnej pozostaje wspólny."/>
 
 <section className="section-space">
  <Container>

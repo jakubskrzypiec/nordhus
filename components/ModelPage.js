@@ -5,15 +5,16 @@ import CTA from "./CTA";
 import GalleryLightbox from "./GalleryLightbox";
 import {BLUR_DATA_URL} from "@/lib/image";
 
+import {asset} from "@/lib/asset";
 export default function ModelPage({model}){
  const spec=[["Powierzchnia całkowita",model.area+" m²"],["Powierzchnia użytkowa",model.usable+" m²"],["Sypialnie",String(model.bedrooms)],["Łazienki",String(model.bathrooms)],["Wysokość pomieszczeń",model.height],["Liczba modułów",String(model.modules)],["Wymiary zewnętrzne",model.dimensions],["Zapotrzebowanie na energię",model.energy],["Izolacja",model.insulation],["Okna",model.windows]];
  const gallery=[
   {src:model.image,alt:`${model.name} — bryła`,className:"col-span-12 row-span-2 md:col-span-7",sizes:"(min-width:768px) 58vw,100vw"},
-  {src:"/images/wnetrze-salon.jpg",alt:`${model.name} — salon`,className:"col-span-12 md:col-span-5",sizes:"(min-width:768px) 42vw,100vw"},
-  {src:"/images/wnetrze-sypialnia.jpg",alt:`${model.name} — sypialnia`,className:"col-span-6 md:col-span-5",sizes:"(min-width:768px) 42vw,50vw"},
-  {src:"/images/wnetrze-lazienka.jpg",alt:`${model.name} — łazienka`,className:"col-span-6 md:col-span-5",sizes:"(min-width:768px) 42vw,50vw"}
+  {src:asset("/images/wnetrze-salon.jpg"),alt:`${model.name} — salon`,className:"col-span-12 md:col-span-5",sizes:"(min-width:768px) 42vw,100vw"},
+  {src:asset("/images/wnetrze-sypialnia.jpg"),alt:`${model.name} — sypialnia`,className:"col-span-6 md:col-span-5",sizes:"(min-width:768px) 42vw,50vw"},
+  {src:asset("/images/wnetrze-lazienka.jpg"),alt:`${model.name} — łazienka`,className:"col-span-6 md:col-span-5",sizes:"(min-width:768px) 42vw,50vw"}
  ];
- const jsonLd={"@context":"https://schema.org","@type":"Product",name:model.name,description:model.description,image:[model.image,"/images/wnetrze-salon.jpg"],brand:{"@type":"Brand",name:"NORDHUS"},offers:{"@type":"Offer",priceCurrency:"PLN",price:model.price.replace(/\D/g,""),availability:"https://schema.org/InStock"}};
+ const jsonLd={"@context":"https://schema.org","@type":"Product",name:model.name,description:model.description,image:[model.image,asset("/images/wnetrze-salon.jpg")],brand:{"@type":"Brand",name:"NORDHUS"},offers:{"@type":"Offer",priceCurrency:"PLN",price:model.price.replace(/\D/g,""),availability:"https://schema.org/InStock"}};
  return <>
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/>
   <section className="section-space bg-[var(--bg)] pt-32 md:pt-40">

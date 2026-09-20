@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import CTA from "@/components/CTA";
 import FullBleedImage from "@/components/FullBleedImage";
 import Image from "next/image";
+import {BLUR_DATA_URL} from "@/lib/image";
 
 export const metadata={title:"Technologia prefabrykacji",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",openGraph:{title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:["/images/produkcja.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:["/images/produkcja.jpg"]}};
 
@@ -16,7 +17,7 @@ export default function Page(){
   <div className="grid grid-cols-12 gap-y-12">
    <div className="col-span-12 lg:col-span-7">
     <div className="relative aspect-[4/3] w-full overflow-hidden lg:ml-[calc(-1*max(0px,(100vw-1280px)/2))] lg:w-[calc(100%+max(0px,(100vw-1280px)/2))]">
-     <Image src="/images/produkcja.jpg" alt="Prefabrykowane moduły w hali" fill quality={90} className="object-cover" sizes="(min-width:1024px) 62vw,100vw"/>
+     <Image src="/images/produkcja.jpg" alt="Prefabrykowane moduły w hali" fill quality={90} className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
     </div>
    </div>
    <div className="col-span-12 lg:col-span-4 lg:col-start-9">

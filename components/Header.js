@@ -7,7 +7,7 @@ export default function Header(){
  const[open,setOpen]=useState(false),[scrolled,setScrolled]=useState(false),[hidden,setHidden]=useState(false),last=useRef(0);const pathname=usePathname();
  useEffect(()=>{const on=()=>{const y=window.scrollY;setScrolled(y>80);if(!open){setHidden(y>last.current&&y>180)}else setHidden(false);last.current=y};on();addEventListener("scroll",on,{passive:true});return()=>removeEventListener("scroll",on)},[open]);
  useEffect(()=>setOpen(false),[pathname]);
- const light=!scrolled&&!open;
+ const heroRoutes=["/","/modele","/proces","/realizacje","/technologia","/o-nas","/kontakt"];const hasHero=heroRoutes.includes(pathname);const light=hasHero&&!scrolled&&!open;
  return <header className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color,color] duration-400 ${hidden?"-translate-y-full":"translate-y-0"} ${light?"border-transparent bg-transparent text-white":"border-b border-[var(--line)] bg-[rgba(250,250,248,.94)] text-[var(--ink)] backdrop-blur-md"}`}>
   <div className="mx-auto flex h-20 max-w-[1360px] items-center justify-between px-5 sm:px-8 lg:px-12">
    <Link href="/" className="focus-ring text-lg font-semibold tracking-[.13em]">NORDHUS</Link>

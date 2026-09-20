@@ -3,7 +3,7 @@ import {useEffect} from "react";
 export default function useReveal(){
  useEffect(()=>{
   const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const els=[...document.querySelectorAll(".reveal")];
+  const els=[...document.querySelectorAll(".reveal,.reveal-image,.section-space")];
   if(reduced){els.forEach(el=>el.classList.add("reveal-in"));return}
   const io=new IntersectionObserver(entries=>{
    entries.forEach(entry=>{

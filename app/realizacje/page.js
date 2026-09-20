@@ -4,7 +4,7 @@ import CTA from "@/components/CTA";
 import FullBleedImage from "@/components/FullBleedImage";
 import RealizationsGrid from "@/components/RealizationsGrid";
 
-export const metadata={title:"Realizacje domów modułowych",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki."};
+export const metadata={title:"Realizacje domów modułowych",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki.",openGraph:{title:"Realizacje domów modułowych | NORDHUS",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki.",images:["/images/realizacja-1.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"Realizacje domów modułowych | NORDHUS",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki.",images:["/images/realizacja-1.jpg"]}};
 
 export default function Page(){return <>
 <Hero image="/images/realizacja-1.jpg" alt="Przykładowa realizacja NORDHUS nad jeziorem" eyebrow="REALIZACJE" title={<>Różne działki.<br/>Ten sam system budowy.</>} text="Poniższe realizacje są materiałem demonstracyjnym pokazującym różne scenariusze działki, logistyki i zmian funkcjonalnych."/>

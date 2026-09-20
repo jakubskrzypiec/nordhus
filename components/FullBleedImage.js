@@ -6,8 +6,8 @@ export default function FullBleedImage({image,alt,eyebrow,title,text}){
  return <section className="relative min-h-[78svh] overflow-hidden bg-[#20201e] text-white">
   <div className="reveal-image absolute inset-0"><Image src={image} alt={alt} fill className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/></div>
   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/5"/>
-  <Container className="relative z-10 flex min-h-[78svh] items-end justify-center pb-12 pt-24 md:pb-20">
-   <div className="reveal max-w-[680px] text-center">
+  <Container className="relative z-10 flex min-h-[78svh] flex-col justify-end pb-12 pt-24 md:pb-20">
+   <div className="reveal mx-auto max-w-[680px] text-center">
     <p className="eyebrow !text-white/65">{eyebrow}</p>
     <h2 className="mt-5">{title}</h2>
     {text&&<p className="mx-auto mt-6 max-w-[60ch] text-[1.0625rem] leading-[1.75] text-white/85">{text}</p>}

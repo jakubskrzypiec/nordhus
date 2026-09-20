@@ -8,13 +8,13 @@ import {asset} from "@/lib/asset";
 export const metadata={title:"Realizacje domów modułowych",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki.",openGraph:{title:"Realizacje domów modułowych | NORDHUS",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki.",images:[asset("/images/realizacja-1.jpg")],type:"website"},twitter:{card:"summary_large_image",title:"Realizacje domów modułowych | NORDHUS",description:"Przykładowe realizacje NORDHUS z informacją o modelu, metrażu, czasie realizacji i warunkach działki.",images:[asset("/images/realizacja-1.jpg")]}};
 
 export default function Page(){return <>
-<Hero image={asset(asset("/images/realizacja-1.jpg"))} alt="Przykładowa realizacja NORDHUS nad jeziorem" eyebrow="REALIZACJE" title={<>Różne działki.<br/>Ten sam system budowy.</>} text="Poniższe realizacje są materiałem demonstracyjnym pokazującym różne scenariusze działki, logistyki i zmian funkcjonalnych."/>
+<Hero image={asset("/images/realizacja-1.jpg")} alt="Przykładowa realizacja NORDHUS nad jeziorem" title={<>Różne działki.<br/>Ten sam system budowy.</>} text="Poniższe realizacje są materiałem demonstracyjnym pokazującym różne scenariusze działki, logistyki i zmian funkcjonalnych."/>
 
 <section className="section-space">
  <Container>
   <div className="grid grid-cols-12 gap-y-10">
    <div className="col-span-12 lg:col-span-5">
-    <p className="eyebrow text-[var(--sage)]">Przykłady</p>
+    <p className="eyebrow">Przykłady</p>
     <h2 className="display mt-5 text-4xl md:text-5xl">Sam metraż nie mówi, jak przebiega inwestycja.</h2>
    </div>
    <div className="col-span-12 lg:col-span-6 lg:col-start-7">
@@ -26,13 +26,13 @@ export default function Page(){return <>
  </Container>
 </section>
 
-<FullBleedImage image={asset(asset("/images/realizacja-3.jpg"))} alt="Zimowy scenariusz domu NORDHUS" eyebrow="MONTAŻ ZIMĄ" title="Pogoda zmienia logistykę, nie cały proces." text="Produkcja pozostaje w hali. Na działce kluczowe są warunki bezpiecznej pracy dźwigu, przejezdność drogi i przygotowanie fundamentu."/>
+<FullBleedImage image={asset("/images/realizacja-3.jpg")} alt="Zimowy scenariusz domu NORDHUS" eyebrow="MONTAŻ ZIMĄ" title="Pogoda zmienia logistykę, nie cały proces." text="Produkcja pozostaje w hali. Na działce kluczowe są warunki bezpiecznej pracy dźwigu, przejezdność drogi i przygotowanie fundamentu."/>
 
-<section className="section-space bg-[#f1f0eb]">
+<section className="section-space bg-white">
  <Container>
   <div className="grid grid-cols-12 gap-y-10">
    <div className="col-span-12 lg:col-span-4">
-    <p className="eyebrow text-[var(--sage)]">Przed montażem</p>
+    <p className="eyebrow">Przed montażem</p>
     <h2 className="display mt-5 text-4xl md:text-5xl">Cztery rzeczy, które sprawdzamy na działce.</h2>
    </div>
    <div className="col-span-12 grid gap-8 md:grid-cols-2 lg:col-span-7 lg:col-start-6">
@@ -41,7 +41,7 @@ export default function Page(){return <>
      ["02","Plac dla dźwigu","Nośność podłoża, wysięg do fundamentu i strefa pracy podpór."],
      ["03","Fundament","Wymiary, poziomy, punkty przyłączy i tolerancje zgodne z dokumentacją."],
      ["04","Okno pogodowe","Wiatr, oblodzenie i warunki uniemożliwiające bezpieczne podnoszenie modułów."]
-    ].map(([n,a,b])=><div key={n} className="border-t border-[var(--line)] pt-5"><p className="text-sm text-[var(--muted)]">{n}</p><h3 className="mt-3 text-xl font-medium">{a}</h3><p className="mt-3 leading-7 text-[var(--muted)]">{b}</p></div>)}
+    ].map(([n,a,b])=><div key={n} className="border-t border-[var(--line)] pt-5"><p className="text-sm text-[var(--muted)]">{n}</p><h3 className="mt-3 text-xl font-normal">{a}</h3><p className="mt-3 leading-7 text-[var(--muted)]">{b}</p></div>)}
    </div>
   </div>
  </Container>

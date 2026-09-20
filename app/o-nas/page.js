@@ -4,7 +4,7 @@ import CTA from "@/components/CTA";
 import FullBleedImage from "@/components/FullBleedImage";
 import Image from "next/image";
 
-export const metadata={title:"O NORDHUS",description:"Poznaj demonstracyjną historię NORDHUS, zespół oraz zasady prowadzenia projektu, produkcji i montażu."};
+export const metadata={title:"O NORDHUS",description:"Poznaj demonstracyjną historię NORDHUS, zespół oraz zasady prowadzenia projektu, produkcji i montażu.",openGraph:{title:"O NORDHUS | NORDHUS",description:"Poznaj demonstracyjną historię NORDHUS, zespół oraz zasady prowadzenia projektu, produkcji i montażu.",images:["/images/o-nas.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"O NORDHUS | NORDHUS",description:"Poznaj demonstracyjną historię NORDHUS, zespół oraz zasady prowadzenia projektu, produkcji i montażu.",images:["/images/o-nas.jpg"]}};
 
 export default function Page(){return <>
 <Hero image="/images/o-nas.jpg" alt="Pracownia projektowa NORDHUS" eyebrow="NORDHUS" title={<>Projekt. Produkcja.<br/>Montaż w jednym rytmie.</>} text="NORDHUS to demonstracyjna marka pokazująca, jak może działać firma produkująca prefabrykowane domy modułowe."/>

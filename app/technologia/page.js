@@ -17,7 +17,7 @@ export default function Page(){
   <div className="grid grid-cols-12 gap-y-12">
    <div className="col-span-12 lg:col-span-7">
     <div className="relative aspect-[4/3] w-full overflow-hidden lg:ml-[calc(-1*max(0px,(100vw-1280px)/2))] lg:w-[calc(100%+max(0px,(100vw-1280px)/2))]">
-     <Image src="/images/produkcja.jpg" alt="Prefabrykowane moduły w hali" fill quality={90} className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
+     <Image src="/images/produkcja.jpg" alt="Prefabrykowane moduły w hali" fill className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
     </div>
    </div>
    <div className="col-span-12 lg:col-span-4 lg:col-start-9">

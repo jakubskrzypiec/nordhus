@@ -4,20 +4,21 @@ import CTA from "@/components/CTA";
 import FullBleedImage from "@/components/FullBleedImage";
 import Image from "next/image";
 import {BLUR_DATA_URL} from "@/lib/image";
+import {asset} from "@/lib/asset";
 
-export const metadata={title:"Technologia prefabrykacji",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",openGraph:{title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:["/images/produkcja.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:["/images/produkcja.jpg"]}};
+export const metadata={title:"Technologia prefabrykacji",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",openGraph:{title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:[asset("/images/produkcja.jpg")],type:"website"},twitter:{card:"summary_large_image",title:"Technologia prefabrykacji | NORDHUS",description:"Konstrukcja, izolacja, wentylacja, ogrzewanie i parametry cieplne domów modułowych NORDHUS.",images:[asset("/images/produkcja.jpg")]}};
 
 export default function Page(){
  const wall=[["01","Elewacja wentylowana","20–28 mm okładziny + szczelina wentylacyjna"],["02","Poszycie zewnętrzne","płyta konstrukcyjna 12–15 mm"],["03","Warstwa wiatroizolacyjna","membrana wysokoparoprzepuszczalna"],["04","Konstrukcja","drewno klasy C24, słupki 45 × 195 mm"],["05","Izolacja między słupkami","wełna mineralna 195 mm"],["06","Warstwa instalacyjna","ruszt 45 mm + dodatkowa izolacja"],["07","Paroizolacja / warstwa szczelna","ciągła warstwa po ciepłej stronie"],["08","Wykończenie wewnętrzne","płyta g-k lub włóknowo-gipsowa 12,5–15 mm"]];
  return <>
-<Hero image="/images/produkcja.jpg" alt="Produkcja modułów w hali" eyebrow="TECHNOLOGIA" title={<>Dom powstaje w hali.<br/>Warstwa po warstwie.</>} text="Prefabrykacja nie zmienia fizyki budynku. Zmienia miejsce, w którym powstają przegrody, instalacje i większość wykończenia."/>
+<Hero image={asset(asset("/images/produkcja.jpg"))} alt="Produkcja modułów w hali" eyebrow="TECHNOLOGIA" title={<>Dom powstaje w hali.<br/>Warstwa po warstwie.</>} text="Prefabrykacja nie zmienia fizyki budynku. Zmienia miejsce, w którym powstają przegrody, instalacje i większość wykończenia."/>
 
 <section className="section-space overflow-hidden">
  <Container>
   <div className="grid grid-cols-12 gap-y-12">
    <div className="col-span-12 lg:col-span-7">
     <div className="relative aspect-[4/3] w-full overflow-hidden lg:ml-[calc(-1*max(0px,(100vw-1280px)/2))] lg:w-[calc(100%+max(0px,(100vw-1280px)/2))]">
-     <Image src="/images/produkcja.jpg" alt="Prefabrykowane moduły w hali" fill className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
+     <Image src={asset(asset("/images/produkcja.jpg"))} alt="Prefabrykowane moduły w hali" fill className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
     </div>
    </div>
    <div className="col-span-12 lg:col-span-4 lg:col-start-9">
@@ -38,7 +39,7 @@ export default function Page(){
  </Container>
 </section>
 
-<FullBleedImage image="/images/montaz.jpg" alt="Montaż modułu NORDHUS" eyebrow="Z HALI NA DZIAŁKĘ" title="Prefabrykacja kończy się dopiero po montażu." text="Dokładność modułu ma znaczenie dopiero wtedy, gdy fundament, transport i połączenia na działce są przygotowane do tego samego standardu." align="right"/>
+<FullBleedImage image={asset(asset("/images/montaz.jpg"))} alt="Montaż modułu NORDHUS" eyebrow="Z HALI NA DZIAŁKĘ" title="Prefabrykacja kończy się dopiero po montażu." text="Dokładność modułu ma znaczenie dopiero wtedy, gdy fundament, transport i połączenia na działce są przygotowane do tego samego standardu." align="right"/>
 
 <section className="section-space">
  <Container>

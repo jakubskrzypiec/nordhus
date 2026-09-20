@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "./Container";
 import CTA from "./CTA";
 import GalleryLightbox from "./GalleryLightbox";
+import {BLUR_DATA_URL} from "@/lib/image";
 
 export default function ModelPage({model}){
  const spec=[["Powierzchnia całkowita",model.area+" m²"],["Powierzchnia użytkowa",model.usable+" m²"],["Sypialnie",String(model.bedrooms)],["Łazienki",String(model.bathrooms)],["Wysokość pomieszczeń",model.height],["Liczba modułów",String(model.modules)],["Wymiary zewnętrzne",model.dimensions],["Zapotrzebowanie na energię",model.energy],["Izolacja",model.insulation],["Okna",model.windows]];
@@ -20,7 +21,7 @@ export default function ModelPage({model}){
   </section>
 
   <section className="relative h-[70svh] min-h-[520px] overflow-hidden bg-[#222]">
-   <Image src={model.image} alt={`${model.name} — dom modułowy`} fill priority quality={90} className="object-cover" sizes="100vw"/>
+   <Image src={model.image} alt={`${model.name} — dom modułowy`} fill priority quality={90} className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
   </section>
 
   <section className="section-space">

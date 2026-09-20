@@ -5,7 +5,7 @@ import CTA from "@/components/CTA";
 import {process} from "@/data/process";
 import {BLUR_DATA_URL} from "@/lib/image";
 
-export const metadata={title:"Proces budowy domu modułowego",description:"Pięć etapów budowy NORDHUS: od wyboru modelu i analizy działki po produkcję, montaż i odbiór.",openGraph:{title:"Proces budowy domu modułowego | NORDHUS",description:"Pięć etapów budowy NORDHUS: od wyboru modelu i analizy działki po produkcję, montaż i odbiór.",images:["/images/montaz.jpg"],type:"website"},twitter:{card:"summary_large_image",images:["/images/montaz.jpg"]}};
+export const metadata={title:"Proces budowy domu modułowego",description:"Pięć etapów budowy NORDHUS: od wyboru modelu i analizy działki po produkcję, montaż i odbiór.",openGraph:{title:"Proces budowy domu modułowego | NORDHUS",description:"Pięć etapów budowy NORDHUS: od wyboru modelu i analizy działki po produkcję, montaż i odbiór.",images:["/images/montaz.jpg"],type:"website"},twitter:{card:"summary_large_image",title:"Proces budowy domu modułowego | NORDHUS",description:"Pięć etapów budowy NORDHUS: od wyboru modelu i analizy działki po produkcję, montaż i odbiór.",images:["/images/montaz.jpg"]}};
 const images=["/images/hero.jpg","/images/montaz.jpg","/images/produkcja.jpg","/images/wnetrze-salon.jpg","/images/model-92.jpg"];
 
 export default function Page(){return <>

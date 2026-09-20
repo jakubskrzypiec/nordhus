@@ -1,2 +1,15 @@
-import ModelPage from "@/components/ModelPage";import {getModel} from "@/data/models";const model=getModel("nordhus-156");const description=model.description+" "+model.price+".";export const metadata={title:"NORDHUS 156 — dom modułowy 156 m²",description,openGraph:{title:"NORDHUS 156 — dom modułowy 156 m² | NORDHUS",description,images:[asset(asset("/images/model-156.jpg"))],type:"website"},twitter:{card:"summary_large_image",title:"NORDHUS 156 — dom modułowy 156 m² | NORDHUS",description,images:[asset(asset("/images/model-156.jpg"))]}};export default function Page(){return <ModelPage model={model}/>} 
+import ModelPage from "@/components/ModelPage";
+import {getModel} from "@/data/models";
 import {asset} from "@/lib/asset";
+
+const model=getModel("nordhus-156");
+const description=model.description+" "+model.price+".";
+
+export const metadata={
+ title:"NORDHUS 156 — dom modułowy 156 m²",
+ description,
+ openGraph:{title:"NORDHUS 156 — dom modułowy 156 m² | NORDHUS",description,images:[asset("/images/model-156.jpg")],type:"website"},
+ twitter:{card:"summary_large_image",title:"NORDHUS 156 — dom modułowy 156 m² | NORDHUS",description,images:[asset("/images/model-156.jpg")]}
+};
+
+export default function Page(){return <ModelPage model={model}/>}

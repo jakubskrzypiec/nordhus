@@ -11,5 +11,5 @@ export default function StatsStrip(){
 function Stat({value,prefix="",suffix="",label,run,divider}){
  const[n,setN]=useState(0);
  useEffect(()=>{if(!run)return;const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduced){setN(value);return}const start=performance.now(),dur=1600;let raf;const tick=now=>{const t=Math.min(1,(now-start)/dur);setN(Math.round(value*ease(t)));if(t<1)raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick);return()=>cancelAnimationFrame(raf)},[run,value]);
- return <div className={`flex flex-col justify-center py-9 md:px-8 ${divider?"md:border-r md:border-white/15":""}`}><p className="stat-number">{prefix}{n}{suffix}</p><p className="mt-3 text-[.6875rem] uppercase tracking-[.18em] text-white/55">{label}</p></div>
+ return <div className={`flex flex-col justify-center py-9 md:px-8 ${divider?"md:border-r md:border-white/15":""}`}><p className="stat-number">{prefix}{n}{suffix}</p><p className="mt-3 text-[.6875rem] uppercase tracking-[.18em] text-white/65">{label}</p></div>
 }

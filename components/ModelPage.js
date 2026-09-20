@@ -21,7 +21,7 @@ export default function ModelPage({model}){
   </section>
 
   <section className="relative h-[70svh] min-h-[520px] overflow-hidden bg-[#222]">
-   <Image src={model.image} alt={`${model.name} — dom modułowy`} fill quality={90} className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
+   <Image src={model.image} alt={`${model.name} — dom modułowy`} fill className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
   </section>
 
   <section className="section-space">

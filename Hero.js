@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Container from "./Container";
-import {BLUR_DATA_URL} from "@/lib/image";
+import Container from "@/Container";
+import {BLUR_DATA_URL} from "@/image";
 
 export default function Hero({image,title,text,primary,secondary,alt=""}){
  return <section className="hero-shell relative min-h-svh overflow-hidden bg-black text-white">

@@ -1,3 +1,3 @@
 "use client";
-import useReveal from "@/hooks/useReveal";
+import useReveal from "@/useReveal";
 export default function SiteEffects(){useReveal();return null}

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Container from "./Container";
-import {BLUR_DATA_URL} from "@/lib/image";
+import Container from "@/Container";
+import {BLUR_DATA_URL} from "@/image";
 
 export default function FullBleedImage({image,alt,eyebrow,title,text}){
  return <section className="relative min-h-[78svh] overflow-hidden bg-black text-white">

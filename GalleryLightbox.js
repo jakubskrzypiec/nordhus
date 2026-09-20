@@ -1,7 +1,7 @@
 "use client";
 import {useEffect,useRef,useState} from "react";
 import Image from "next/image";
-import {BLUR_DATA_URL} from "@/lib/image";
+import {BLUR_DATA_URL} from "@/image";
 export default function GalleryLightbox({items,className=""}){
  const[index,setIndex]=useState(null),dialog=useRef(null);
  const open=i=>setIndex(i),close=()=>setIndex(null);

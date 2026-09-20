@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel NORDHUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--muted:#737373;--line:#e5e5e5;--soft:#f6f6f6;
+--new:#000;--prog:#7a5cff;--quote:#0a7d4b;--done:#9a9a9a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:400 15px/1.6 Archivo,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.u{text-transform:uppercase;letter-spacing:1.2px;font-weight:700;font-size:11px}
+
+/* layout */
+.app{display:grid;grid-template-columns:232px 1fr;min-height:100vh}
+aside{background:var(--ink);color:#fff;padding:22px 0;display:flex;flex-direction:column}
+.brand{padding:0 22px 26px;font-size:17px;letter-spacing:3px;font-weight:700}
+.brand small{display:block;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.45);margin-top:5px;font-weight:400}
+nav a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 22px;color:rgba(255,255,255,.62);text-decoration:none;font-size:13px}
+nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+nav a.on{color:#fff;background:rgba(255,255,255,.1);box-shadow:inset 3px 0 0 #fff}
+nav .cnt{font-size:10px;background:#fff;color:#000;min-width:19px;height:19px;display:grid;place-items:center;font-weight:700}
+.side-foot{margin-top:auto;padding:18px 22px 0;border-top:1px solid rgba(255,255,255,.12);font-size:11px;color:rgba(255,255,255,.4)}
+.side-foot button{color:rgba(255,255,255,.75);text-decoration:underline;font-size:11px;margin-top:8px;display:block}
+
+main{min-width:0;display:flex;flex-direction:column}
+.bar{border-bottom:1px solid var(--line);padding:16px 30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar h1{font-size:19px;font-weight:500;letter-spacing:.3px}
+.bar .sp{flex:1}
+.demo-tag{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;border:1px solid var(--line);padding:5px 9px;color:var(--muted)}
+.wrap{padding:26px 30px 60px;flex:1}
+
+/* table */
+table{width:100%;border-collapse:collapse}
+th{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 12px 9px;font-weight:700;white-space:nowrap}
+td{padding:14px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--soft)}
+.nm{font-weight:500}
+.sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+.num{white-space:nowrap}
+
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;padding:5px 9px;border:1px solid var(--line);white-space:nowrap}
+.chip i{width:6px;height:6px;border-radius:50%;background:currentColor;font-style:normal}
+.s-nowe{color:var(--new)}.s-wtoku{color:var(--prog)}.s-wycena{color:var(--quote)}.s-zamkniete{color:var(--done)}
+.dot-unread{display:inline-block;width:7px;height:7px;background:#000;border-radius:50%;margin-right:7px;vertical-align:middle}
+
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{border:1px solid var(--line);padding:7px 12px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* drawer */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.ov.on{opacity:1;pointer-events:auto}
+.dr{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:#fff;transform:translateX(100%);transition:.3s cubic-bezier(.22,1,.36,1);z-index:50;display:flex;flex-direction:column}
+.dr.on{transform:none}
+.dr header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+.dr header h2{font-size:18px;font-weight:500}
+.dr .body{overflow:auto;padding:22px 26px 40px;flex:1}
+.dr footer{border-top:1px solid var(--line);padding:14px 26px;display:flex;gap:8px;flex-wrap:wrap}
+.x{font-size:22px;line-height:1;color:var(--muted);margin-left:auto}
+
+.kv{display:grid;grid-template-columns:150px 1fr;gap:9px 14px;font-size:14px}
+.kv dt{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.8px;padding-top:2px}
+h3.sec{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin:26px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+
+.btn{border:1px solid var(--ink);background:var(--ink);color:#fff;padding:10px 16px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
+.btn.o{background:none;color:var(--ink)}
+.btn.o:hover{background:var(--ink);color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+
+.log{list-style:none;font-size:13px}
+.log li{padding:9px 0 9px 16px;border-left:1px solid var(--line);position:relative}
+.log li::before{content:"";position:absolute;left:-3.5px;top:15px;width:6px;height:6px;background:var(--muted);border-radius:50%}
+.log time{display:block;color:var(--muted);font-size:11px;margin-bottom:2px}
+textarea{width:100%;border:1px solid var(--line);padding:11px;resize:vertical;min-height:74px}
+textarea:focus{outline:0;border-color:var(--ink)}
+
+/* board */
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.col{background:var(--soft);padding:14px;min-height:280px}
+.col h3{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;display:flex;justify-content:space-between;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);padding:12px;margin-bottom:9px}
+.card b{font-weight:500;font-size:14px}
+.card .sub{font-size:12px}
+.mv{display:flex;gap:6px;margin-top:9px}
+.mv button{border:1px solid var(--line);width:26px;height:24px;font-size:12px;color:var(--muted)}
+.mv button:hover:not(:disabled){border-color:var(--ink);color:var(--ink)}
+.mv button:disabled{opacity:.3;cursor:default}
+
+/* stats */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:26px}
+.tile{background:#fff;padding:20px}
+.tile .n{font-size:34px;font-weight:400;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile .l{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:6px}
+.tile .d{font-size:12px;color:var(--muted);margin-top:8px}
+.summary{border-left:3px solid var(--ink);padding:14px 18px;background:var(--soft);font-size:15px;line-height:1.75;margin-bottom:26px}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+.blist{list-style:none;font-size:13.5px}
+.blist li{display:grid;grid-template-columns:1fr auto;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.blist span:last-child{color:var(--muted);font-variant-numeric:tabular-nums}
+
+.empty{text-align:center;padding:70px 20px;color:var(--muted)}
+.hint{background:var(--soft);border:1px solid var(--line);padding:14px 16px;font-size:13px;color:var(--muted);margin-bottom:22px;display:flex;gap:12px;align-items:flex-start}
+.hint b{color:var(--ink);font-weight:500}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 20px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}
+  aside{flex-direction:row;align-items:center;overflow:auto;padding:0}
+  .brand{display:none}
+  nav{display:flex}
+  nav a{white-space:nowrap;padding:14px 16px}
+  nav a.on{box-shadow:inset 0 -3px 0 #fff}
+  .side-foot{display:none}
+  .board{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .wrap,.bar{padding-left:18px;padding-right:18px}
+  .kv{grid-template-columns:1fr;gap:2px 0}
+  .kv dd{margin-bottom:9px}
+  .hide-m{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside>
+    <div class="brand">NORDHUS<small>PANEL KLIENTA</small></div>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      Wersja demonstracyjna.<br>Dane są przykładowe.
+      <button id="reset">Przywróć dane demo</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="bar">
+      <h1 id="title">Skrzynka zapytań</h1>
+      <span class="sp"></span>
+      <span class="demo-tag" id="tag">DEMO</span>
+    </div>
+    <div class="wrap" id="view"></div>
+  </main>
+</div>
+
+<div class="ov" id="ov"></div>
+<div class="dr" id="dr" role="dialog" aria-modal="true" aria-label="Szczegóły zapytania"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- piaskownica ---------- */
+const params=new URLSearchParams(location.search);
+const TOKEN=(params.get('d')||localStorage.getItem('nordhus_last')||Math.random().toString(36).slice(2,8)).toLowerCase();
+localStorage.setItem('nordhus_last',TOKEN);
+const KEY='nordhus_demo_'+TOKEN;
+
+const MODELS=['NORDHUS 68','NORDHUS 92','NORDHUS 124','NORDHUS 156'];
+const STATUS={nowe:'Nowe','w-toku':'W toku',wycena:'Wycena wysłana',zamkniete:'Zamknięte'};
+const CLS={nowe:'s-nowe','w-toku':'s-wtoku',wycena:'s-wycena',zamkniete:'s-zamkniete'};
+const STAGES=['Wycena','Projekt','Produkcja','Montaż'];
+
+const days=n=>{const d=new Date();d.setDate(d.getDate()-n);d.setHours(9+(n%7),(n*13)%60,0,0);return d.toISOString()};
+
+function seed(){
+  const q=(o)=>Object.assign({status:'nowe',unread:true,stage:null,log:[],brief:null,notes:''},o);
+  return {
+    created:new Date().toISOString(),
+    inquiries:[
+      q({id:'z-108',at:days(0),name:'Marta Zielińska',email:'m.zielinska@gmail.com',phone:'+48 602 118 940',model:'NORDHUS 92',area:'80–110 m²',budget:'600–900 tys. zł',plot:'Mam działkę',voi:'wielkopolskie',start:'3–6 miesięcy',fin:'Kredyt w trakcie',notes:'Działka 1200 m² pod Poznaniem, media w drodze. Interesuje nas wersja z tarasem.'}),
+      q({id:'z-107',at:days(1),name:'Tomasz Wierzbicki',email:'t.wierzbicki@onet.pl',phone:'+48 514 220 771',model:'Jeszcze nie wiem',area:'110–140 m²',budget:'900 tys. – 1,2 mln zł',plot:'Jestem w trakcie zakupu',voi:'dolnośląskie',start:'6–12 miesięcy',fin:'Kredyt',notes:'Działka na lekkim zboczu, pytanie czy to problem przy montażu.'}),
+      q({id:'z-106',at:days(2),name:'Anna i Paweł Krupa',email:'apkrupa@wp.pl',phone:'+48 698 340 512',model:'NORDHUS 124',area:'110–140 m²',budget:'900 tys. – 1,2 mln zł',plot:'Mam działkę',voi:'mazowieckie',start:'do 3 miesięcy',fin:'Gotówka',notes:'Zależy nam na terminie. Czy da się zacząć produkcję jeszcze w tym kwartale?',status:'w-toku',unread:false,stage:'Wycena',
+        log:[{at:days(2),t:'Zapytanie z formularza'},{at:days(1),t:'Telefon — ustalony termin wizyty na działce'}]}),
+      q({id:'z-105',at:days(4),name:'Robert Szulc',email:'r.szulc@firma-szulc.pl',phone:'+48 601 887 002',model:'NORDHUS 156',area:'powyżej 140 m²',budget:'powyżej 1,2 mln zł',plot:'Mam działkę',voi:'pomorskie',start:'3–6 miesięcy',fin:'Gotówka',notes:'Działka nad jeziorem, 2400 m². Proszę o wycenę z tarasem i wiatą.',status:'wycena',unread:false,stage:'Projekt',
+        log:[{at:days(4),t:'Zapytanie z formularza'},{at:days(3),t:'Wizyta na działce — warunki OK'},{at:days(1),t:'Wycena wysłana: 1 284 000 zł'}],
+        brief:{sent:days(3),answered:days(2),a:{'Liczba domowników':'4 osoby (2 dorosłych, 2 dzieci)','Styl wnętrz':'Minimalistyczny, jasne drewno','Priorytet':'Duży salon z widokiem na jezioro','Garaż':'Wiata na 2 auta','Termin krytyczny':'Wprowadzka przed wrześniem'}}}),
+      q({id:'z-104',at:days(6),name:'Katarzyna Lemańska',email:'k.lemanska@gmail.com',phone:'+48 663 291 118',model:'NORDHUS 68',area:'do 80 m²',budget:'do 600 tys. zł',plot:'Szukam',voi:'małopolskie',start:'później',fin:'Kredyt',notes:'Na razie zbieram informacje, działki jeszcze nie mam.',status:'w-toku',unread:false}),
+      q({id:'z-103',at:days(9),name:'Michał Dąbrowski',email:'mdabrowski@interia.pl',phone:'+48 512 004 663',model:'NORDHUS 92',area:'80–110 m²',budget:'600–900 tys. zł',plot:'Mam działkę',voi:'łódzkie',start:'do 3 miesięcy',fin:'Kredyt',notes:'Proszę o kontakt po 16:00.',status:'wycena',unread:false,stage:'Produkcja',
+        log:[{at:days(9),t:'Zapytanie z formularza'},{at:days(7),t:'Wycena wysłana: 748 000 zł'},{at:days(5),t:'Umowa podpisana'}]}),
+      q({id:'z-102',at:days(14),name:'Grzegorz Nowicki',email:'g.nowicki@gmail.com',phone:'+48 600 112 889',model:'NORDHUS 124',area:'110–140 m²',budget:'600–900 tys. zł',plot:'Mam działkę',voi:'śląskie',start:'6–12 miesięcy',fin:'Kredyt',notes:'Budżet raczej na styk, proszę o wariant podstawowy.',status:'zamkniete',unread:false,
+        log:[{at:days(14),t:'Zapytanie z formularza'},{at:days(12),t:'Wycena wysłana: 962 000 zł'},{at:days(8),t:'Klient rezygnuje — budżet'}]}),
+      q({id:'z-101',at:days(21),name:'Ewa Sobczak',email:'ewa.sobczak@op.pl',phone:'+48 697 553 210',model:'NORDHUS 156',area:'powyżej 140 m²',budget:'powyżej 1,2 mln zł',plot:'Mam działkę',voi:'zachodniopomorskie',start:'3–6 miesięcy',fin:'Gotówka',notes:'',status:'zamkniete',unread:false,stage:'Montaż',
+        log:[{at:days(21),t:'Zapytanie z formularza'},{at:days(18),t:'Umowa podpisana'},{at:days(3),t:'Moduły gotowe do transportu'}]}),
+    ],
+    traffic:{visits:[38,41,35,52,61,44,39,47,58,73,66,51,49,62,70,88,74,59,63,81,92,77,68,72,85,96,83,79,91,104],
+      sources:[['Google',412],['Bezpośrednie',188],['Facebook',131],['Instagram',96],['Polecenia',54]],
+      pages:[['/modele/nordhus-92',344],['/','318'],['/modele',276],['/realizacje',201],['/technologia',167],['/kontakt',149]]}
+  };
+}
+
+let DB;
+function save(d){if(d)DB=d;try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}}
+function load(){try{const r=localStorage.getItem(KEY);if(r)return JSON.parse(r)}catch(e){}const s=seed();save(s);return s}
+DB=load();
+
+/* zapytania wysłane z formularza na stronie */
+try{
+  const inbox=JSON.parse(localStorage.getItem('nordhus_inbox')||'[]');
+  if(inbox.length){
+    inbox.forEach((f,i)=>{
+      DB.inquiries.unshift(Object.assign({id:'z-'+(200+i),at:f.at||new Date().toISOString(),status:'nowe',unread:true,stage:null,log:[{at:f.at||new Date().toISOString(),t:'Zapytanie z formularza na stronie'}],brief:null},f));
+    });
+    localStorage.removeItem('nordhus_inbox');save();
+  }
+}catch(e){}
+
+/* ---------- pomocnicze ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=iso=>{const d=new Date(iso),n=new Date(),h=(n-d)/36e5;
+  if(h<1)return 'przed chwilą';if(h<24)return Math.floor(h)+' godz. temu';
+  const dd=Math.floor(h/24);if(dd===1)return 'wczoraj';if(dd<7)return dd+' dni temu';
+  return d.toLocaleDateString('pl-PL',{day:'numeric',month:'long'})};
+const full=iso=>new Date(iso).toLocaleString('pl-PL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2200)}
+
+const PAGES=[['skrzynka','Skrzynka zapytań'],['projekty','Projekty'],['briefy','Briefy'],['statystyki','Statystyki']];
+let page='skrzynka',filter='all';
+
+function nav(){
+  const n=DB.inquiries.filter(i=>i.unread).length;
+  $('#nav').innerHTML=PAGES.map(([k,l])=>
+    `<a href="#${k}" class="${page===k?'on':''}">${l}${k==='skrzynka'&&n?`<span class="cnt">${n}</span>`:''}</a>`).join('');
+}
+
+/* ---------- widoki ---------- */
+function render(){
+  nav();
+  $('#title').textContent=(PAGES.find(p=>p[0]===page)||[])[1]||'';
+  $('#tag').textContent='DEMO · '+TOKEN.toUpperCase();
+  ({skrzynka:vInbox,projekty:vBoard,briefy:vBriefs,statystyki:vStats}[page]||vInbox)();
+}
+
+function vInbox(){
+  const list=DB.inquiries.filter(i=>filter==='all'||i.status===filter);
+  const cnt=k=>DB.inquiries.filter(i=>i.status===k).length;
+  $('#view').innerHTML=`
+  <div class="hint"><b>Jak to działa?</b><span>Wypełnij formularz na stronie NORDHUS — zapytanie pojawi się tutaj na górze listy. Kliknij dowolny wiersz, żeby zobaczyć szczegóły, zmienić status i wysłać brief.</span></div>
+  <div class="filters">
+    <button class="${filter==='all'?'on':''}" data-f="all">Wszystkie (${DB.inquiries.length})</button>
+    ${Object.keys(STATUS).map(k=>`<button class="${filter===k?'on':''}" data-f="${k}">${STATUS[k]} (${cnt(k)})</button>`).join('')}
+  </div>
+  ${list.length?`<table><thead><tr>
+    <th>Klient</th><th class="hide-m">Model</th><th class="hide-m">Budżet</th><th class="hide-m">Działka</th><th>Status</th><th>Wpłynęło</th>
+  </tr></thead><tbody>${list.map(i=>`
+    <tr data-id="${i.id}">
+      <td><div class="nm">${i.unread?'<span class="dot-unread"></span>':''}${esc(i.name)}</div><div class="sub">${esc(i.voi)} · ${esc(i.phone)}</div></td>
+      <td class="hide-m">${esc(i.model)}<div class="sub">${esc(i.area)}</div></td>
+      <td class="hide-m num">${esc(i.budget)}</td>
+      <td class="hide-m">${esc(i.plot)}</td>
+      <td><span class="chip ${CLS[i.status]}"><i></i>${STATUS[i.status]}</span></td>
+      <td class="num sub">${fmt(i.at)}</td>
+    </tr>`).join('')}</tbody></table>`:'<div class="empty">Brak zapytań w tym filtrze.</div>'}`;
+  $('#view').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+  $('#view').querySelectorAll('tbody tr').forEach(r=>r.onclick=()=>open(r.dataset.id));
+}
+
+function vBoard(){
+  const inP=DB.inquiries.filter(i=>i.stage);
+  $('#view').innerHTML=`
+  <div class="hint"><b>Projekty w toku.</b><span>Zapytanie trafia tutaj, gdy zmienisz jego status na „W toku” lub dalej. Strzałkami przesuwasz projekt między etapami.</span></div>
+  <div class="board">${STAGES.map(s=>{
+    const c=inP.filter(i=>i.stage===s);
+    return `<div class="col"><h3>${s}<span>${c.length}</span></h3>
+      ${c.map(i=>`<div class="card"><b>${esc(i.name)}</b><div class="sub">${esc(i.model)} · ${esc(i.voi)}</div>
+        <div class="mv">
+          <button data-mv="${i.id}" data-dir="-1" ${STAGES.indexOf(s)===0?'disabled':''} aria-label="Cofnij">←</button>
+          <button data-mv="${i.id}" data-dir="1" ${STAGES.indexOf(s)===STAGES.length-1?'disabled':''} aria-label="Dalej">→</button>
+        </div></div>`).join('')||'<div class="sub">—</div>'}
+    </div>`}).join('')}</div>`;
+  $('#view').querySelectorAll('[data-mv]').forEach(b=>b.onclick=()=>{
+    const i=DB.inquiries.find(x=>x.id===b.dataset.mv);
+    const n=STAGES.indexOf(i.stage)+ +b.dataset.dir;
+    if(n>=0&&n<STAGES.length){i.stage=STAGES[n];i.log.push({at:new Date().toISOString(),t:'Etap zmieniony na: '+i.stage});save();render();toast('Etap: '+i.stage)}
+  });
+}
+
+function vBriefs(){
+  const withB=DB.inquiries.filter(i=>i.brief);
+  $('#view').innerHTML=`
+  <div class="hint"><b>Brief to formularz, który wysyłasz klientowi.</b><span>Zamiast wyciągać wymagania mailem, klient wypełnia ustrukturyzowany formularz, a odpowiedzi trafiają prosto do jego zapytania.</span></div>
+  ${withB.length?withB.map(i=>`
+    <h3 class="sec">${esc(i.name)} · ${esc(i.model)}</h3>
+    <div class="sub" style="margin-bottom:12px">Wysłano ${full(i.brief.sent)}${i.brief.answered?` · odpowiedź ${full(i.brief.answered)}`:' · <b>oczekuje na odpowiedź</b>'}</div>
+    ${i.brief.answered?`<dl class="kv">${Object.entries(i.brief.a).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:''}
+  `).join(''):'<div class="empty">Nie wysłano jeszcze żadnego briefu.<br>Otwórz zapytanie w skrzynce i kliknij „Wyślij brief”.</div>'}`;
+}
+
+function vStats(){
+  const t=DB.traffic,v=t.visits,week=v.slice(-7).reduce((a,b)=>a+b,0),prev=v.slice(-14,-7).reduce((a,b)=>a+b,0);
+  const diff=prev?Math.round((week-prev)/prev*100):0;
+  const q7=DB.inquiries.filter(i=>(Date.now()-new Date(i.at))/864e5<=7).length;
+  const conv=week?(q7/week*100).toFixed(1):0;
+  const max=Math.max(...v),W=760,H=140,step=W/v.length;
+  $('#view').innerHTML=`
+  <div class="summary">W ostatnim tygodniu stronę odwiedziło <b>${week} osób</b>, czyli o <b>${diff>0?'+':''}${diff}%</b> ${diff>=0?'więcej':'mniej'} niż tydzień wcześniej. Z tego <b>${q7} osób</b> zostawiło zapytanie. Najwięcej wejść przyszło z <b>${t.sources[0][0]}</b>, a najczęściej oglądaną podstroną był <b>${t.pages[0][0]}</b>.</div>
+  <div class="tiles">
+    <div class="tile"><div class="n">${week}</div><div class="l">Odwiedziny / 7 dni</div><div class="d">${diff>0?'+':''}${diff}% względem poprzedniego tygodnia</div></div>
+    <div class="tile"><div class="n">${q7}</div><div class="l">Zapytania / 7 dni</div><div class="d">Z formularza na stronie</div></div>
+    <div class="tile"><div class="n">${conv}%</div><div class="l">Konwersja</div><div class="d">Ilu odwiedzających pisze</div></div>
+    <div class="tile"><div class="n">${DB.inquiries.filter(i=>i.unread).length}</div><div class="l">Nieprzeczytane</div><div class="d">Czekają na odpowiedź</div></div>
+  </div>
+  <h3 class="sec">Odwiedziny — ostatnie 30 dni</h3>
+  <svg viewBox="0 0 ${W} ${H+22}" style="width:100%;height:auto" role="img" aria-label="Wykres odwiedzin z ostatnich 30 dni">
+    ${v.map((n,i)=>{const h=n/max*H;return `<rect x="${(i*step+2).toFixed(1)}" y="${(H-h).toFixed(1)}" width="${(step-4).toFixed(1)}" height="${h.toFixed(1)}" fill="${i>=v.length-7?'#000':'#d6d6d6'}"/>`}).join('')}
+    <line x1="0" y1="${H}" x2="${W}" y2="${H}" stroke="#e5e5e5"/>
+    <text x="0" y="${H+16}" font-size="10" fill="#737373">30 dni temu</text>
+    <text x="${W}" y="${H+16}" font-size="10" fill="#737373" text-anchor="end">dziś</text>
+  </svg>
+  <div class="two" style="margin-top:30px">
+    <div><h3 class="sec">Najczęściej oglądane podstrony</h3><ul class="blist">${t.pages.map(([p,n])=>`<li><span>${esc(p)}</span><span>${n}</span></li>`).join('')}</ul></div>
+    <div><h3 class="sec">Skąd przychodzą</h3><ul class="blist">${t.sources.map(([s,n])=>`<li><span>${esc(s)}</span><span>${n}</span></li>`).join('')}</ul></div>
+  </div>`;
+}
+
+/* ---------- szuflada ---------- */
+function open(id){
+  const i=DB.inquiries.find(x=>x.id===id);if(!i)return;
+  if(i.unread){i.unread=false;save()}
+  $('#dr').innerHTML=`
+    <header>
+      <div><h2>${esc(i.name)}</h2><div class="sub">${esc(i.id.toUpperCase())} · wpłynęło ${full(i.at)}</div></div>
+      <button class="x" id="cl" aria-label="Zamknij">×</button>
+    </header>
+    <div class="body">
+      <span class="chip ${CLS[i.status]}"><i></i>${STATUS[i.status]}</span>
+      ${i.stage?`<span class="chip" style="margin-left:6px">Etap: ${esc(i.stage)}</span>`:''}
+
+      <h3 class="sec">Kontakt</h3>
+      <dl class="kv">
+        <dt>E-mail</dt><dd><a href="mailto:${esc(i.email)}">${esc(i.email)}</a></dd>
+        <dt>Telefon</dt><dd><a href="tel:${esc(i.phone.replace(/\s/g,''))}">${esc(i.phone)}</a></dd>
+      </dl>
+
+      <h3 class="sec">Czego szuka</h3>
+      <dl class="kv">
+        <dt>Model</dt><dd>${esc(i.model)}</dd>
+        <dt>Metraż</dt><dd>${esc(i.area)}</dd>
+        <dt>Budżet</dt><dd>${esc(i.budget)}</dd>
+        <dt>Działka</dt><dd>${esc(i.plot)}</dd>
+        <dt>Województwo</dt><dd>${esc(i.voi)}</dd>
+        <dt>Start budowy</dt><dd>${esc(i.start)}</dd>
+        <dt>Finansowanie</dt><dd>${esc(i.fin)}</dd>
+      </dl>
+      ${i.notes?`<h3 class="sec">Uwagi klienta</h3><p>${esc(i.notes)}</p>`:''}
+
+      ${i.brief?`<h3 class="sec">Brief${i.brief.answered?' — wypełniony':' — wysłany, brak odpowiedzi'}</h3>
+        ${i.brief.answered?`<dl class="kv">${Object.entries(i.brief.a).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:'<p class="sub">Czeka na wypełnienie przez klienta.</p>'}`:''}
+
+      <h3 class="sec">Historia</h3>
+      <ul class="log">${(i.log.length?i.log:[{at:i.at,t:'Zapytanie z formularza'}]).map(l=>`<li><time>${full(l.at)}</time>${esc(l.t)}</li>`).join('')}</ul>
+
+      <h3 class="sec">Notatka wewnętrzna</h3>
+      <textarea id="note" placeholder="Widoczna tylko dla Ciebie...">${esc(i.internal||'')}</textarea>
+      <button class="btn o" id="saveNote" style="margin-top:9px">Zapisz notatkę</button>
+    </div>
+    <footer>
+      <select id="st" style="border:1px solid var(--line);padding:10px">
+        ${Object.keys(STATUS).map(k=>`<option value="${k}" ${i.status===k?'selected':''}>${STATUS[k]}</option>`).join('')}
+      </select>
+      <button class="btn o" id="brief" ${i.brief?'disabled':''}>${i.brief?'Brief wysłany':'Wyślij brief'}</button>
+      <button class="btn" id="mail">Odpowiedz mailem</button>
+    </footer>`;
+  $('#dr').classList.add('on');$('#ov').classList.add('on');
+  $('#cl').onclick=close_;
+  $('#saveNote').onclick=()=>{i.internal=$('#note').value;save();toast('Notatka zapisana')};
+  $('#st').onchange=e=>{
+    i.status=e.target.value;
+    if(i.status!=='nowe'&&!i.stage)i.stage='Wycena';
+    if(i.status==='nowe')i.stage=null;
+    i.log.push({at:new Date().toISOString(),t:'Status zmieniony na: '+STATUS[i.status]});
+    save();render();toast('Status: '+STATUS[i.status]);open(id);
+  };
+  $('#brief').onclick=()=>{
+    i.brief={sent:new Date().toISOString(),answered:null,a:{}};
+    i.log.push({at:new Date().toISOString(),t:'Wysłano brief do klienta'});
+    save();open(id);toast('Brief wysłany do '+i.email);
+  };
+  $('#mail').onclick=()=>{location.href='mailto:'+i.email+'?subject='+encodeURIComponent('NORDHUS — odpowiedź na zapytanie '+i.id.toUpperCase())};
+}
+function close_(){$('#dr').classList.remove('on');$('#ov').classList.remove('on');render()}
+$('#ov').onclick=close_;
+addEventListener('keydown',e=>{if(e.key==='Escape')close_()});
+
+$('#reset').onclick=()=>{if(confirm('Przywrócić przykładowe dane demo? Twoje zmiany zostaną usunięte.')){localStorage.removeItem(KEY);DB=load();page='skrzynka';filter='all';render();toast('Dane demo przywrócone')}};
+
+addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(PAGES.some(p=>p[0]===h)){page=h;filter='all';render()}});
+if(PAGES.some(p=>p[0]===location.hash.slice(1)))page=location.hash.slice(1);
+render();
+</script>
+</body>
+</html>

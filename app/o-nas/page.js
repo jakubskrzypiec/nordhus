@@ -20,10 +20,7 @@ export default function Page(){return <>
  </div>
 </Container></section>
 
-<section className="bg-black text-white"><Container>
- <p className="pt-7 text-xs uppercase tracking-[.14em] text-white/45">Dane demonstracyjne</p>
- <div className="grid grid-cols-2 md:grid-cols-4">{[["2019","rok założenia"],["127","domów"],["4 800 m²","powierzchni hali"],["34","osoby w zespole"]].map(([a,b],i)=><div key={b} className={`py-10 md:px-7 ${i<3?"md:border-r md:border-white/15":""}`}><p className="display text-5xl md:text-7xl">{a}</p><p className="mt-3 text-[11px] uppercase tracking-[.16em] text-white/50">{b}</p></div>)}</div>
-</Container></section>
+
 
 <section className="section-space"><Container>
  <div className="section-heading"><p className="eyebrow">Zespół — osoby fikcyjne</p><h2 className="mt-5">Kto odpowiada za kolejne decyzje.</h2></div>

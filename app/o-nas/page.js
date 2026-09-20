@@ -30,7 +30,7 @@ export default function Page(){return <>
  <Container>
   <div className="grid grid-cols-12 gap-y-12">
    <div className="col-span-12 lg:col-span-7">
-    <div className="relative aspect-video w-full overflow-hidden lg:ml-[calc(-1*max(0px,(100vw-1280px)/2))] lg:w-[calc(100%+max(0px,(100vw-1280px)/2))]"><Image src="/images/o-nas.jpg" alt="Stół projektowy z modelem domu modułowego" fill quality={90} className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/></div>
+    <div className="relative aspect-video w-full overflow-hidden lg:ml-[calc(-1*max(0px,(100vw-1280px)/2))] lg:w-[calc(100%+max(0px,(100vw-1280px)/2))]"><Image src="/images/o-nas.jpg" alt="Stół projektowy z modelem domu modułowego" fill className="object-cover" sizes="(min-width:1024px) 62vw,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/></div>
    </div>
    <div className="col-span-12 lg:col-span-4 lg:col-start-9"><p className="eyebrow text-[var(--sage)]">Zespół — osoby fikcyjne</p><h2 className="display mt-5 text-4xl md:text-5xl">Kto odpowiada za kolejne decyzje.</h2><div className="mt-8">{[["Anna Nowak","architekt prowadząca"],["Marek Zieliński","konstruktor"],["Karolina Wójcik","kierowniczka produkcji"],["Piotr Lewandowski","koordynator montażu"]].map(([n,r])=><div key={n} className="border-t border-[var(--line)] py-5"><h3 className="text-lg font-medium">{n}</h3><p className="mt-1 text-sm text-[var(--muted)]">{r}</p></div>)}</div></div>
   </div>

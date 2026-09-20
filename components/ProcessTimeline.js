@@ -7,7 +7,7 @@ export default function ProcessTimeline(){
    {process.map(step=><article key={step.number} className="relative">
     <p className="font-[var(--font-display)] text-[2.5rem] leading-none text-[var(--muted)]">{String(step.number).padStart(2,"0")}</p>
     <div className="relative z-10 mt-4 h-3 w-3 border border-[var(--muted)] bg-[var(--bg)]"/>
-    <h3 className="mt-5 text-left">{step.title}</h3>
+    <h3 className="mt-5">{step.title}</h3>
     <p className="mt-2 text-sm text-[var(--muted)]">{step.duration}</p>
    </article>)}
   </div>
@@ -16,7 +16,7 @@ export default function ProcessTimeline(){
    {process.map(step=><article key={step.number} className="relative">
     <span className="absolute -left-[2.05rem] top-[.35rem] h-3 w-3 border border-[var(--muted)] bg-[var(--bg)]"/>
     <p className="font-[var(--font-display)] text-[2.5rem] leading-none text-[var(--muted)]">{String(step.number).padStart(2,"0")}</p>
-    <h3 className="mt-2 text-left">{step.title}</h3>
+    <h3 className="mt-2">{step.title}</h3>
     <p className="mt-2 text-sm text-[var(--muted)]">{step.duration}</p>
    </article>)}
   </div>

@@ -1,2 +1,5 @@
 export const dynamic="force-static";
-export default function robots(){const base=process.env.NEXT_PUBLIC_SITE_URL||"https://nordhus.vercel.app";return{rules:{userAgent:"*",allow:"/"},sitemap:base+"/sitemap.xml"}}
+const basePath=process.env.NEXT_PUBLIC_BASE_PATH||"";
+const configured=process.env.NEXT_PUBLIC_SITE_URL||"https://jakubskrzypiec.github.io";
+const base=configured.endsWith(basePath)?configured:configured+basePath;
+export default function robots(){return{rules:{userAgent:"*",allow:"/"},sitemap:base+"/sitemap.xml"}}

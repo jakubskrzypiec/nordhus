@@ -19,8 +19,8 @@ export const metadata={
  metadataBase:new URL(siteUrl),
  title:{default:"NORDHUS — Domy modułowe",template:"%s | NORDHUS"},
  description:"Prefabrykowane domy modułowe od 68 do 156 m².",
- openGraph:{type:"website",siteName:"NORDHUS",images:[{url:asset(asset("/images/hero.jpg")),width:1672,height:941,alt:"NORDHUS — dom modułowy"}]},
- twitter:{card:"summary_large_image",images:[asset(asset("/images/hero.jpg"))]},
+ openGraph:{type:"website",siteName:"NORDHUS",images:[{url:asset("/images/hero.jpg"),width:1672,height:941,alt:"NORDHUS — dom modułowy"}]},
+ twitter:{card:"summary_large_image",images:[asset("/images/hero.jpg")]},
  icons:{icon:[{url:asset("/favicon.ico")},{url:asset("/favicon.svg"),type:"image/svg+xml"}],shortcut:asset("/favicon.ico")}
 };
 

@@ -1,0 +1,29 @@
+name: Install NORDHUS images
+
+on:
+  push:
+    paths:
+      - ".assets/nordhus-images.zip"
+      - ".github/workflows/install-images.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  install-images:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract images
+        run: |
+          mkdir -p public/images
+          unzip -o .assets/nordhus-images.zip -d public/images
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images
+          git diff --cached --quiet && exit 0
+          git commit -m "Add NORDHUS images"
+          git push

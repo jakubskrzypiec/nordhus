@@ -26,7 +26,37 @@ export default function Home(){return <><script type="application/ld+json" dange
 
 <section className="section-space"><Container><p className="eyebrow">PROCES BUDOWY</p><h2 className="mt-5">5 etapów. Jeden harmonogram.</h2><p className="section-intro mt-6">Każdy etap ma jasny zakres, czas i rezultat — bez przerzucania odpowiedzialności między ekipami.</p><ProcessTimeline steps={process}/><div className="mt-10 text-center"><Link href="/proces" className="text-[12px] font-bold uppercase tracking-[1.2px]">Zobacz cały proces →</Link></div></Container></section>
 
-<section className="section-space"><Container><p className="eyebrow">ZAKRES CENY</p><h2 className="mt-5">Co jest w cenie, a co pozostaje po stronie działki</h2></Container><div className="relative mt-10 h-[40vh] min-h-[320px] w-full overflow-hidden"><Image src={asset("/produkcja.jpg")} alt="Produkcja modułów NORDHUS" fill className="object-cover" sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/></div><Container><div className="mt-10 grid md:grid-cols-2"><div className="pb-8 md:border-r md:border-[var(--line)] md:pb-0 md:pr-10"><h3>W cenie bazowej</h3><ul className="mt-6 space-y-3">{included.map(x=><li key={x}>— {x}</li>)}</ul></div><div className="border-t border-[var(--line)] pt-8 md:border-t-0 md:pl-10 md:pt-0"><h3>Po stronie działki</h3><ul className="mt-6 space-y-3">{excluded.map(x=><li key={x}>— {x}</li>)}</ul></div></div></Container></section>
+<section className="section-space">
+ <Container>
+  <div className="section-heading">
+   <p className="eyebrow">ZAKRES CENY</p>
+   <h2 className="mt-5">Co jest w cenie, a co pozostaje po stronie działki</h2>
+  </div>
+
+  <div className="relative mt-14 h-[52vh] min-h-[420px] max-h-[620px] w-full overflow-hidden">
+   <Image src={asset("/produkcja.jpg")} alt="Produkcja modułów NORDHUS" fill className="object-cover" sizes="(min-width:1360px) 1264px,100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
+  </div>
+
+  <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
+   <div>
+    <div className="border-t border-black pt-6">
+     <h3 className="text-left">W cenie bazowej</h3>
+    </div>
+    <ul className="mt-8">
+     {included.map(x=><li key={x} className="border-t border-[var(--line)] py-4 text-[15px] uppercase tracking-[.04em] first:border-t-0">— {x}</li>)}
+    </ul>
+   </div>
+   <div>
+    <div className="border-t border-black pt-6">
+     <h3 className="text-left">Po stronie działki</h3>
+    </div>
+    <ul className="mt-8">
+     {excluded.map(x=><li key={x} className="border-t border-[var(--line)] py-4 text-[15px] uppercase tracking-[.04em] first:border-t-0">— {x}</li>)}
+    </ul>
+   </div>
+  </div>
+ </Container>
+</section>
 
 <FullBleedImage image={asset("/realizacja-1.jpg")} alt="Wizualizacja domu NORDHUS nad jeziorem" eyebrow="ZREALIZOWANE" title="Ten sam system. Inny kontekst." text="Zdjęcia w serwisie są wizualizacjami demonstracyjnymi. Pokazują, jak ta sama logika modułowa może pracować na różnych działkach i w różnych warunkach."/>
 

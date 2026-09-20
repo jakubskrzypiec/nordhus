@@ -3,11 +3,12 @@ import {useEffect,useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
+import {BLUR_DATA_URL} from "@/lib/image";
 export default function Hero({image,eyebrow,title,text,primary,secondary,full=false,alt=""}){
  const[intro,setIntro]=useState(true),[ready,setReady]=useState(false);
  useEffect(()=>{const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduced){setIntro(false);setReady(true);return}const a=setTimeout(()=>setIntro(false),2500),b=setTimeout(()=>setReady(true),3150);return()=>{clearTimeout(a);clearTimeout(b)}},[]);
  return <section className={`hero-shell relative overflow-hidden bg-[#222] text-white ${full?"min-h-svh":"min-h-[78svh]"}`}>
-  <Image src={image} alt={alt} fill priority quality={90} className={`hero-image object-cover ${full?"hero-zoom":""}`} sizes="100vw"/>
+  <Image src={image} alt={alt} fill priority quality={90} className={`hero-image object-cover ${full?"hero-zoom":""}`} sizes="100vw" placeholder="blur" blurDataURL={BLUR_DATA_URL}/>
   <div className="absolute inset-0 bg-[rgba(28,28,26,.18)]"/><div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,28,26,.72)] via-[rgba(28,28,26,.28)] to-[rgba(28,28,26,.10)]"/>
   {full&&<TechnicalOverlay visible={intro}/>}
   <Container className={`relative z-10 flex ${full?"min-h-svh":"min-h-[78svh]"} items-end pb-12 pt-28 md:pb-20`}>

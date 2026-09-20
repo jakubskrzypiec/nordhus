@@ -1,0 +1,1 @@
+import ModelPage from "@/components/ModelPage";import {getModel} from "@/data/models";const model=getModel("nordhus-92");export const metadata={title:"NORDHUS 92 — dom modułowy 92 m²",description:model.description+" "+model.price+"."};export default function Page(){return <ModelPage model={model}/>} 

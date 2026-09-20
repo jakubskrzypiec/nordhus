@@ -1,9 +1,51 @@
-import Hero from "@/components/Hero";import Container from "@/components/Container";import CTA from "@/components/CTA";import Image from "next/image";
+import Hero from "@/components/Hero";
+import Container from "@/components/Container";
+import CTA from "@/components/CTA";
+import FullBleedImage from "@/components/FullBleedImage";
+import Image from "next/image";
+
 export const metadata={title:"O NORDHUS",description:"Poznaj demonstracyjną historię NORDHUS, zespół oraz zasady prowadzenia projektu, produkcji i montażu."};
-export default function Page(){return <><Hero image="/images/o-nas.jpg" alt="Pracownia projektowa NORDHUS" eyebrow="NORDHUS" title={<>Projekt. Produkcja.<br/>Montaż w jednym rytmie.</>} text="NORDHUS to demonstracyjna marka pokazująca, jak może działać firma produkująca prefabrykowane domy modułowe."/>
-<section className="section-space"><Container className="grid gap-12 lg:grid-cols-2"><div><p className="eyebrow text-[var(--sage)]">Historia — dane demonstracyjne</p><h2 className="display mt-5 text-4xl md:text-5xl">Zaczęliśmy od problemu z harmonogramem.</h2></div><div className="space-y-6 leading-8 text-[var(--muted)]"><p>W przykładowej historii NORDHUS firma powstała w 2019 roku po kilku projektach domów jednorodzinnych prowadzonych w tradycyjnym modelu. Największym problemem nie była sama technologia budowy, ale liczba zależności pomiędzy ekipami, pogodą, dostawami i zmianami wykonywanymi już na placu.</p><p>Drugi etap rozwoju polegał na przeniesieniu konstrukcji, instalacji i większości wykończenia do hali. Zamiast organizować każdy dom od zera, zespół przygotował cztery bazowe modele, wspólny system detali oraz powtarzalny proces kontroli przed zakryciem warstw.</p><p>Dzisiaj ten demonstracyjny model firmy opiera się na jednej odpowiedzialności za projekt produkcyjny, prefabrykację i montaż. Klient nadal podejmuje decyzje dotyczące działki i funkcji domu, ale nie koordynuje osobno konstruktorów, instalatorów i ekip odpowiedzialnych za ustawienie modułów.</p></div></Container></section>
-<section className="border-y border-[var(--line)] bg-[#f1f0eb]"><Container><p className="py-5 text-xs text-[var(--muted)]">Poniższe liczby są przykładowe i służą wyłącznie prezentacji projektu demonstracyjnego.</p><div className="grid grid-cols-2 md:grid-cols-4">{[["2019","rok założenia"],["127","domów"],["4 800 m²","powierzchni hali"],["34","osoby w zespole"]].map(([a,b])=><div key={b} className="border-t border-[var(--line)] p-7"><p className="text-3xl font-medium">{a}</p><p className="mt-1 text-sm text-[var(--muted)]">{b}</p></div>)}</div></Container></section>
-<section className="section-space"><Container className="grid gap-12 lg:grid-cols-2"><div className="relative aspect-video"><Image src="/images/o-nas.jpg" alt="Stół projektowy z modelem domu modułowego" fill className="object-cover"/></div><div><p className="eyebrow text-[var(--sage)]">Zespół — osoby fikcyjne</p><h2 className="display mt-5 text-4xl md:text-5xl">Kto odpowiada za kolejne decyzje.</h2><div className="mt-8">{[["Anna Nowak","architekt prowadząca","koordynuje adaptację modeli, układ funkcjonalny i dokumentację architektoniczną"],["Marek Zieliński","konstruktor","odpowiada za układ nośny modułów, połączenia i sprawdzenie zmian konstrukcyjnych"],["Karolina Wójcik","kierowniczka produkcji","planuje kolejność stanowisk, odbiory międzyoperacyjne i gotowość modułów do transportu"],["Piotr Lewandowski","koordynator montażu","sprawdza logistykę działki, pracę dźwigu, połączenia modułów i odbiór na miejscu"]].map(([n,r,d])=><div key={n} className="border-t border-[var(--line)] py-5"><h3 className="text-lg font-medium">{n}</h3><p className="mt-1 text-sm font-semibold text-[var(--sage)]">{r}</p><p className="mt-3 leading-7 text-[var(--muted)]">{d}</p></div>)}</div></div></Container></section>
-<section className="section-space bg-[#f7f8f5]"><Container><p className="eyebrow text-[var(--sage)]">Jak pracujemy</p><h2 className="display mt-5 text-4xl md:text-5xl">Trzy zasady zamiast kilkunastu haseł.</h2><div className="mt-10 grid gap-8 md:grid-cols-3">{[["01","Zakres przed produkcją","Materiały, instalacje i opcje dodatkowe zamykamy przed uruchomieniem modułów. Późne zmiany są możliwe tylko wtedy, gdy nie destabilizują konstrukcji i harmonogramu."],["02","Jedna osoba prowadzi etap","Klient wie, kto odpowiada za projekt, produkcję i montaż. Informacje nie krążą między przypadkowymi ekipami bez właściciela decyzji."],["03","Problemy pokazujemy wcześnie","Jeżeli dojazd, grunt, MPZP albo budżet ograniczają wybrany model, informujemy o tym przed projektem wykonawczym. Ta informacja jest ważniejsza niż szybkie potwierdzenie każdej prośby."]].map(([n,a,b])=><div key={n} className="border-t border-[var(--line)] pt-5"><p className="text-sm text-[var(--muted)]">{n}</p><h3 className="mt-3 text-xl font-medium">{a}</h3><p className="mt-4 leading-8 text-[var(--muted)]">{b}</p></div>)}</div></Container></section>
-<section className="section-space"><Container><p className="eyebrow text-[var(--sage)]">Odpowiedzialność</p><h2 className="display mt-5 text-4xl md:text-5xl">Co mierzymy w projekcie.</h2><div className="mt-10 grid gap-8 md:grid-cols-2">{[["Czas","Każdy etap ma przewidywany termin, warunek rozpoczęcia i listę rzeczy, które mogą go przesunąć."],["Koszt","Cena jest dzielona na dom, opcje oraz prace pozostające po stronie działki. Dzięki temu łatwiej porównać oferty na tym samym zakresie."],["Dokumentacja","Zmiany są nanoszone do jednego zestawu rysunków produkcyjnych, a nie uzgadniane ustnie dopiero na budowie."],["Odbiór","Przed zakryciem warstw i przed transportem moduły przechodzą kolejne kontrole. Po montażu powstaje protokół końcowy."]].map(([a,b])=><div key={a} className="border-t border-[var(--line)] pt-5"><h3 className="text-xl font-medium">{a}</h3><p className="mt-3 leading-8 text-[var(--muted)]">{b}</p></div>)}</div></Container></section>
-<CTA/></>}
+
+export default function Page(){return <>
+<Hero image="/images/o-nas.jpg" alt="Pracownia projektowa NORDHUS" eyebrow="NORDHUS" title={<>Projekt. Produkcja.<br/>Montaż w jednym rytmie.</>} text="NORDHUS to demonstracyjna marka pokazująca, jak może działać firma produkująca prefabrykowane domy modułowe."/>
+
+<section className="section-space">
+ <Container>
+  <div className="grid grid-cols-12 gap-y-10">
+   <div className="col-span-12 lg:col-span-4"><p className="eyebrow text-[var(--sage)]">Historia — dane demonstracyjne</p><h2 className="display mt-5 text-4xl md:text-5xl">Zaczęliśmy od problemu z harmonogramem.</h2></div>
+   <div className="col-span-12 space-y-6 lg:col-span-7 lg:col-start-6"><p className="max-w-[68ch] leading-8 text-[var(--muted)]">W przykładowej historii NORDHUS firma powstała w 2019 roku po kilku projektach domów jednorodzinnych prowadzonych w tradycyjnym modelu. Największym problemem nie była sama technologia budowy, ale liczba zależności pomiędzy ekipami, pogodą, dostawami i zmianami wykonywanymi już na placu.</p><p className="max-w-[68ch] leading-8 text-[var(--muted)]">Drugi etap rozwoju polegał na przeniesieniu konstrukcji, instalacji i większości wykończenia do hali. Zespół przygotował cztery bazowe modele i wspólny system detali.</p><p className="max-w-[68ch] leading-8 text-[var(--muted)]">Dzisiaj ten demonstracyjny model opiera się na jednej odpowiedzialności za projekt produkcyjny, prefabrykację i montaż.</p></div>
+  </div>
+ </Container>
+</section>
+
+<section className="bg-[var(--ink)] text-white">
+ <Container>
+  <p className="pt-7 text-xs uppercase tracking-[.14em] text-white/45">Dane demonstracyjne</p>
+  <div className="grid grid-cols-2 md:grid-cols-4">{[["2019","rok założenia"],["127","domów"],["4 800 m²","powierzchni hali"],["34","osoby w zespole"]].map(([a,b],i)=><div key={b} className={`py-10 md:px-7 ${i<3?"md:border-r md:border-white/15":""}`}><p className="display text-5xl md:text-7xl">{a}</p><p className="mt-3 text-[11px] uppercase tracking-[.16em] text-white/50">{b}</p></div>)}</div>
+ </Container>
+</section>
+
+<section className="section-space overflow-hidden">
+ <Container>
+  <div className="grid grid-cols-12 gap-y-12">
+   <div className="col-span-12 lg:col-span-7">
+    <div className="relative aspect-video w-full overflow-hidden lg:ml-[calc(-1*max(0px,(100vw-1280px)/2))] lg:w-[calc(100%+max(0px,(100vw-1280px)/2))]"><Image src="/images/o-nas.jpg" alt="Stół projektowy z modelem domu modułowego" fill quality={90} className="object-cover" sizes="(min-width:1024px) 62vw,100vw"/></div>
+   </div>
+   <div className="col-span-12 lg:col-span-4 lg:col-start-9"><p className="eyebrow text-[var(--sage)]">Zespół — osoby fikcyjne</p><h2 className="display mt-5 text-4xl md:text-5xl">Kto odpowiada za kolejne decyzje.</h2><div className="mt-8">{[["Anna Nowak","architekt prowadząca"],["Marek Zieliński","konstruktor"],["Karolina Wójcik","kierowniczka produkcji"],["Piotr Lewandowski","koordynator montażu"]].map(([n,r])=><div key={n} className="border-t border-[var(--line)] py-5"><h3 className="text-lg font-medium">{n}</h3><p className="mt-1 text-sm text-[var(--muted)]">{r}</p></div>)}</div></div>
+  </div>
+ </Container>
+</section>
+
+<FullBleedImage image="/images/produkcja.jpg" alt="Hala produkcyjna NORDHUS" eyebrow="JAK PRACUJEMY" title="Proces ma właściciela na każdym etapie." text="Projekt, produkcja i montaż nie są osobnymi światami. Dokumentacja produkcyjna łączy decyzje architekta, konstruktora, instalatorów i ekipy montażowej."/>
+
+<section className="section-space bg-[#f7f8f5]">
+ <Container>
+  <div className="grid grid-cols-12 gap-y-10">
+   <div className="col-span-12 lg:col-span-4"><p className="eyebrow text-[var(--sage)]">Trzy zasady</p><h2 className="display mt-5 text-4xl md:text-5xl">Mniej haseł. Więcej punktów kontrolnych.</h2></div>
+   <div className="col-span-12 grid gap-8 md:grid-cols-3 lg:col-span-8 lg:col-start-5">{[["01","Zakres przed produkcją","Materiały, instalacje i opcje dodatkowe zamykamy przed uruchomieniem modułów."],["02","Jedna osoba prowadzi etap","Klient wie, kto odpowiada za projekt, produkcję i montaż."],["03","Problemy pokazujemy wcześnie","Jeżeli dojazd, grunt, MPZP albo budżet ograniczają wybrany model, informujemy o tym przed projektem wykonawczym."]].map(([n,a,b])=><div key={n} className="border-t border-[var(--line)] pt-5"><p className="text-sm text-[var(--muted)]">{n}</p><h3 className="mt-3 text-xl font-medium">{a}</h3><p className="mt-4 leading-8 text-[var(--muted)]">{b}</p></div>)}</div>
+  </div>
+ </Container>
+</section>
+
+<CTA/>
+</>}
